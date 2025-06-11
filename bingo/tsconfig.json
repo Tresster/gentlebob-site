@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["DOM", "ES6"],
+    "sourceMap": true,
+    "outDir": "dist/scripts",
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedSideEffectImports": true,
+    "rewriteRelativeImportExtensions": true
+  },
+  "include": ["src/scripts"]
+}

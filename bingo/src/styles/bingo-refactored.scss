@@ -1,0 +1,162 @@
+// SCSS refactor of bingo.scss to demonstrate variables, nesting, and mixins
+
+// Variables
+$primary-bg: rgba(34, 42, 51, 1);
+$text-color: white;
+$link-color: #000000;
+$font-main: 'Comic Sans', 'Comic Sans MS', 'Chalkboard', 'ChalkboardSE-Regular', sans-serif;
+$font-special: 'FontinSmallCaps', Verdana, Arial, Helvetica, sans-serif;
+$max-width-main: 50rem;
+$padding-main: 2rem;
+
+// Mixin for user-select
+@mixin user-select-none {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@font-face {
+  font-family: 'FontinSmallCaps';
+  font-weight: normal;
+  font-style: normal;
+  src:
+    local('☺'),
+    url('/bingo/assets/fonts/fontin-smallcaps-webfont.woff') format('woff');
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 1em;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: $primary-bg;
+  color: $text-color;
+  padding: 0;
+  margin: 0;
+
+  main {
+    font-family: $font-main;
+    text-align: center;
+    max-width: $max-width-main;
+    padding: $padding-main;
+    margin: auto;
+
+    a {
+      &:link,
+      &:visited {
+        color: $link-color;
+      }
+    }
+  }
+}
+
+#card {
+  width: 100%;
+
+  th {
+    width: 20%;
+  }
+
+  td {
+    padding: 0.25rem;
+    text-align: center;
+    font-size: 1rem;
+    height: 8em;
+    width: 20%;
+    font-weight: 600;
+    cursor: default;
+    background-origin: padding-box, padding-box, padding-box;
+    background-position-x: 0%, 100%, 0%;
+    background-position-y: 0%, 0%, 0%;
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    background-size:
+      100% contain,
+      100% contain,
+      100% contain;
+    background-color: black;
+    font-family: $font-special;
+    font-size: 14.3px;
+    font-weight: 400;
+    padding-left: 6.08519px;
+    padding-right: 6.08519px;
+
+    &.toggled {
+      background-image:
+        url(/bingo/assets/images/header-rare-left.png), url(/bingo/assets/images/header-rare-right.png),
+        url(/bingo/assets/images/header-rare-middle.png);
+      color: rgb(136, 136, 255);
+    }
+    &.untoggled {
+      background-image:
+        url(/bingo/assets/images/header-normal-left.png), url(/bingo/assets/images/header-normal-right.png),
+        url(/bingo/assets/images/header-normal-middle.png);
+      color: white;
+    }
+
+    p {
+      vertical-align: middle;
+    }
+  }
+}
+
+table {
+  @include user-select-none;
+}
+
+#shadowBox {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 3px solid;
+}
+
+.rainbow_text_animated {
+  background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow_animation 6s ease-in-out infinite;
+  background-size: 400% 100%;
+}
+
+@keyframes rainbow_animation {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+}
+
+.shaper {
+  background: gray url(/bingo/assets/images/shaper.png) repeat 0 0;
+  -webkit-animation: slide 200s linear infinite;
+  animation: slide 200s linear infinite;
+}
+
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -512px -512px;
+  }
+}
+
+.shade {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    $primary-bg 5%,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0) 60%,
+    $primary-bg 95%
+  );
+}

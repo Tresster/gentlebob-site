@@ -1,0 +1,5 @@
+if test -f .prettierrc; then
+  npm run prettier-format
+fi
+
+npm run build-bingo

@@ -1,0 +1,37 @@
+{
+  "name": "gentlebob-site",
+  "version": "1.0.0",
+  "description": "Gentlebob site.",
+  "homepage": "https://www.gentlebob.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gentlebob/gentlebob.github.io.git"
+  },
+  "license": "MIT",
+  "author": "gentlebob",
+  "contributors": [
+    {
+      "name": "Tresster"
+    }
+  ],
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "build-bingo": "sass bingo/src/styles/bingo.scss bingo/dist/styles/bingo.css --no-source-map && esbuild bingo/src/scripts/bingo.ts --outfile=bingo/dist/scripts/bingo.js --tsconfig=bingo/tsconfig.json --format=esm --bundle",
+    "lint-bingo": "eslint bingo/src/scripts",
+    "prepare": "husky || true",
+    "prettier-format": "prettier --config .prettierrc . --write",
+    "typecheck-bingo": "tsc --project bingo/tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "sass": "^1.89.2"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.5",
+    "eslint": "^9.28.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.0"
+  }
+}

@@ -1,0 +1,145 @@
+@font-face {
+  font-family: 'FontinSmallCaps';
+  font-weight: normal;
+  font-style: normal;
+  src:
+    local('☺'),
+    url('/bingo/assets/fonts/fontin-smallcaps-webfont.woff') format('woff');
+}
+
+@keyframes rainbow_animation {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -512px -512px;
+  }
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: rgba(34, 42, 51, 1);
+  color: white;
+  padding: 0px;
+  margin: 0px;
+
+  main {
+    font-family: 'Comic Sans', 'Comic Sans MS', 'Chalkboard', 'ChalkboardSE-Regular', sans-serif;
+    text-align: center;
+    max-width: 50rem;
+    padding: 2rem;
+    margin: auto;
+    font-family: 'Comic Sans', 'Comic Sans MS', 'Chalkboard', 'ChalkboardSE-Regular', sans-serif;
+    text-align: center;
+  }
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+table {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+
+#card {
+  width: 100%;
+
+  th {
+    width: 20%;
+  }
+
+  td {
+    text-align: center;
+    height: 8em;
+    width: 20%;
+    /*  cursor: cell;*/
+    cursor: default;
+
+    background-origin: padding-box, padding-box, padding-box;
+    background-position-x: 0%, 100%, 0%;
+    background-position-y: 0%, 0%, 0%;
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    background-size:
+      100% contain,
+      100% contain,
+      100% contain;
+    background-color: black;
+    font-family: FontinSmallCaps, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    padding-left: 0.375em;
+    padding-right: 0.375em;
+
+    &.toggled {
+      background-image:
+        url(/bingo/assets/images/header-rare-left.png), url(/bingo/assets/images/header-rare-right.png),
+        url(/bingo/assets/images/header-rare-middle.png);
+      color: rgb(136, 136, 255);
+    }
+
+    &.untoggled {
+      background-image:
+        url(/bingo/assets/images/header-normal-left.png), url(/bingo/assets/images/header-normal-right.png),
+        url(/bingo/assets/images/header-normal-middle.png);
+      color: white;
+    }
+
+    p {
+      vertical-align: middle;
+    }
+  }
+}
+
+.rainbow_text_animated {
+  background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow_animation 6s ease-in-out infinite;
+  background-size: 400% 100%;
+}
+
+.shaper {
+  background: gray url(/bingo/assets/images/shaper.png) repeat 0 0;
+  -webkit-animation: slide 200s linear infinite;
+  animation: slide 200s linear infinite;
+}
+
+.shade {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    rgba(34, 42, 51, 1) 5%,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(34, 42, 51, 1) 95%
+  );
+}
